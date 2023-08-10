@@ -5,6 +5,8 @@ import { currentUser } from "@clerk/nextjs";
 export default async function Page() {
   const user = await currentUser();
 
+  if (!user) return null;
+
   const userInfo = {};
 
   const userData = {
