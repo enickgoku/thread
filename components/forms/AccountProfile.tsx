@@ -11,6 +11,7 @@ import {
   FormControl,
   FormField,
   FormItem,
+  FormMessage,
   FormLabel,
 } from "@/components/ui/form";
 import { Textarea } from "@/components/ui/textarea";
@@ -145,6 +146,7 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
                   onChange={(e) => handleImage(e, field.onChange)}
                 />
               </FormControl>
+              <FormMessage />
             </FormItem>
           )}
         />
@@ -163,6 +165,7 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
                   {...field}
                 />
               </FormControl>
+              <FormMessage />
             </FormItem>
           )}
         />
@@ -181,6 +184,7 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
                   {...field}
                 />
               </FormControl>
+              <FormMessage />
             </FormItem>
           )}
         />
@@ -199,6 +203,7 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
                   {...field}
                 />
               </FormControl>
+              <FormMessage />
             </FormItem>
           )}
         />
