@@ -17,6 +17,7 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 // import { updateUser } from "@/lib/actions/user.actions";
 import { usePathname, useRouter } from "next/navigation";
+import { createThread } from "@/lib/actions/thread.actions";
 
 interface Props {
   user: {
@@ -42,8 +43,18 @@ const PostThread = ({ userId }: { userId: string }) => {
     },
   });
 
-  const onSubmit = () => {
-    console.log("submit");
+  const onSubmit = async (values: z.infer<typeof ThreadValidation>) => {
+    try {
+      await createThread({
+        text: values.thread,
+        author: userId,
+        communityId: null,
+        path: pathname,
+      });
+      router.push("/");
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
