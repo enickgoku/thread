@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
 
 interface Props {
   id: string;
@@ -35,6 +34,7 @@ const ThreadCard = ({
   community,
   createdAt,
   comments,
+  isComment,
 }: Props) => {
   return (
     <article className="flex w-full flex-col rounded-excel bg-dark-2 pe-7">
@@ -67,28 +67,37 @@ const ThreadCard = ({
                   height={24}
                   className="cursor-pointer object-contain"
                 />
+                <Link href={`/thread/${id}`}>
+                  <Image
+                    src="/assets/reply.svg"
+                    alt="heart"
+                    width={24}
+                    height={24}
+                    className="cursor-pointer object-contain"
+                  />
+                </Link>
                 <Image
-                  src="/assets/heart-gray.svg"
+                  src="/assets/repost.svg"
                   alt="heart"
                   width={24}
                   height={24}
                   className="cursor-pointer object-contain"
                 />
                 <Image
-                  src="/assets/heart-gray.svg"
-                  alt="heart"
-                  width={24}
-                  height={24}
-                  className="cursor-pointer object-contain"
-                />
-                <Image
-                  src="/assets/heart-gray.svg"
+                  src="/assets/share.svg"
                   alt="heart"
                   width={24}
                   height={24}
                   className="cursor-pointer object-contain"
                 />
               </div>
+              {isComment && comments.length > 0 && (
+                <Link href={`/thread/${id}`}>
+                  <p className="mt-1 text-subtle-medium text-gray-1">
+                    {comments.length} replies.
+                  </p>
+                </Link>
+              )}
             </div>
           </div>
         </div>
